@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},distributed_tracing:{enabled:true}};(window.NREUM||(NREUM={})).loader_config={agentID:"212824224",accountID:"2945514",trustKey:"2945514",xpid:"Vg8DVFNSDBACVVNaBQAHXlU=",licenseKey:"NRJS-34f9bba67d35aad7e1d",applicationID:"212821081"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(29),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(30),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError";if(!c.disabled){var l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){L++,C=g.hash,this[u]=y.now()}function o(){L--,g.hash!==C&&i(0,!0);var t=y.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+g,e])}function a(t,e){t.on(e,function(){this[e]=y.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,g=w.location,y=t("loader");if(w[v]&&y.xhrWrappable&&!y.disabled){var x=t(10),b=t(11),E=t(8),R=t(6),O=t(13),S=t(7),N=t(14),M=t(9),P=t("ee"),T=P.get("tracer");t(16),y.features.spa=!0;var C,L=0;P.on(u,r),b.on(p,r),M.on(p,r),P.on(d,o),b.on(l,o),M.on(l,o),P.buffer([u,d,"xhr-done","xhr-resolved"]),R.buffer([u]),O.buffer(["setTimeout"+c,"clearTimeout"+s,u]),N.buffer([u,"new-xhr","send-xhr"+s]),S.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),x.buffer([u]),b.buffer(["propagate",p,l,"executor-err","resolve"+s]),T.buffer([u,"no-"+u]),M.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(N,"send-xhr"+s),a(P,"xhr-resolved"),a(P,"xhr-done"),a(S,m+s),a(S,m+"-done"),a(M,"new-jsonp"),a(M,"jsonp-end"),a(M,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,L>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",g="pushState",y=t("loader");if(!y.disabled){y.features.stn=!0,t(8),"addEventListener"in window&&t(6);var x=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),o.on(v,function(t,e){var n=t[0];n instanceof x&&i("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+l,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(30),a=t(29);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,p=s.Response,l=s.fetch,h="prototype",m="nr@context";d&&p&&l&&(a(u,function(t,e){r(d[h],e,f),r(p[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t("wrap-function")(r);e.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t("wrap-function")(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];Node&&Node.prototype&&Node.prototype.appendChild?f.inPlace(Node.prototype,l,"dom-"):(f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-")),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t("wrap-function")(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=i.context(),n=s(t,"executor-",e,null,!1),r=new f(n);return i.context(r).getCtx=function(){return e},r}var o=t("wrap-function"),i=t("ee").get("promise"),a=t("ee").getOrSetContext,s=o(i),c=t(29),f=NREUM.o.PR;e.exports=i,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){i.emit("propagate",[null,!o],a,!1,!1),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var a=e.apply(f,arguments),s=f.resolve(a);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&i.emit("propagate",[t,!0],n,!1,!1),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),o.wrapInPlace(f.prototype,"then",function(t){return function(){var e=this,n=o.argsToArray.apply(this,arguments),r=a(e);r.promise=e,n[0]=s(n[0],"cb-",r,null,!1),n[1]=s(n[1],"cb-",r,null,!1);var c=t.apply(this,n);return r.nextPromise=c,i.emit("propagate",[e,!0],c,!1,!1),c}}),i.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this,null,!1),t[1]=s(t[1],"resolve-",this,null,!1)}),i.on("executor-err",function(t,e,n){t[1](n)}),i.on("cb-end",function(t,e,n){i.emit("propagate",[n,!0],this.nextPromise,!1,!1)}),i.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=i.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):v?v(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,x),x.prototype=l.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=l.generateSpanId(),m=l.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&p())&&(w.traceContextParentHeader=o(h,m),w.traceContextStateHeader=i(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function o(t,e){return"00-"+e+"-"+t+"-01"}function i(t,e,n,r,o){var i=0,a="",s=1,c="",f="";return o+"@nr="+i+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var o=h(n.allowed_origins[r]);if(t.hostname===o.hostname&&t.protocol===o.protocol&&t.port===o.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function p(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var l=t(26),h=t(17);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],16:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function o(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(17),f=t(15).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],p=d.length,l=t("id"),h=t(22),m=t(21),v=t(18),w=NREUM.o.REQ,g=window.XMLHttpRequest;a.features.xhr=!0,t(14),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){i(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<p;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var o=f(this.parsedOrigin);if(o&&(o.newrelicHeader||o.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var i={};for(var a in r)i[a]=r[a];i.headers=new Headers(r.headers||{}),e(i.headers,o)&&(this.dt=o),t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&e(t[0].headers,o)&&(this.dt=o)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},i=this.target;"string"==typeof i?n=i:"object"==typeof i&&i instanceof w?n=i.url:window.URL&&"object"==typeof i&&i instanceof URL&&(n=i.href),o(this,n);var s=(""+(i&&i instanceof w&&i.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}),u.on("fetch-done",function(t,e){this.params||(this.params={}),this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime])})}},{}],17:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],18:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(21);e.exports=r},{}],19:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(29),s=t(30),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],20:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],21:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],22:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],23:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(i=Math.max((new Date).getTime(),i))-a}function o(){return i}var i=(new Date).getTime(),a=i,s=t(31);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=o},{}],24:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],25:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function i(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!v){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),v=!0,d("timing",["fi",e,n])}}function s(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,f,u,d=t("handle"),p=t("loader"),l=t(28),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(o);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(i);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var v=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(t){document.addEventListener(t,a,!1)})}l(s)}},{}],26:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){return a(16)}function i(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,o=window.crypto||window.msCrypto;o&&o.getRandomValues&&Uint8Array&&(n=o.getRandomValues(new Uint8Array(31)));for(var i=[],a=0;a<t;a++)i.push(e().toString(16));return i.join("")}e.exports={generateUuid:r,generateSpanId:o,generateTraceId:i}},{}],27:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],28:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[o]?"hidden":"visible")}"addEventListener"in document&&i&&document.addEventListener(i,e,!1)}e.exports=r;var o,i,a;"undefined"!=typeof document.hidden?(o="hidden",i="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",i="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",i="webkitvisibilitychange",a="webkitVisibilityState")},{}],29:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],30:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],31:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,o,i,a){if(a!==!1&&(a=!0),!l.aborted||i){t&&a&&t(n,r,o);for(var s=e(o),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var p=d[y[n]];return p&&p.push([x,n,r,s]),s}}function i(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return p[t]=p[t]||o(n)}function w(t,e){l.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:i,addEventListener:i,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function i(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",f=t("gos"),u=t(29),d={},p={},l=e.exports=o();e.exports.getOrSetContext=i,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!S++){var t=O.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+O.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function o(){"complete"===m.readyState&&i()}function i(){s("mark",["domContent",a()+O.offset],null,"api")}var a=t(23),s=t("handle"),c=t(29),f=t("ee"),u=t(27),d=t(24),p=t(20),l=p.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!d(h.location);NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1210.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),O=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(19),t(25),m[v]?(m[v]("DOMContentLoaded",i,!1),h[v]("load",r,!1)):(m[w]("onreadystatechange",o),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var S=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var i,a,u,p;try{a=this,i=d(arguments),u="function"==typeof r?r(i,a):r||{}}catch(l){o([l,"",[i,a,c],u],t)}s(n+"start",[i,a,c],u,f);try{return p=e.apply(a,i)}catch(h){throw s(n+"err",[i,a,h],u,f),h}finally{s(n+"end",[i,a,p],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,i(e,nrWrapper,t),nrWrapper)}function r(t,e,r,o,i){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,o,c,i))}function s(n,r,i,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,i,e,a)}catch(c){o([c,n,r,i],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=p,n}function o(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function i(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(i){o([i],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function s(t,e){var n=e(t);return n[p]=t,i(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(30),p="nr@original",l=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,16,5,3,4]);</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177528025-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-177528025-2');
+        </script>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <title>Jaalifestyle</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+        <link rel="stylesheet" type="text/css" href="v2/css/base.css">
+        <link rel="stylesheet" type="text/css" href="v2/css/login.css?v=1.2">
+        <link rel="stylesheet" type="text/css" href="v2/css/alert.css">
+        <link rel="stylesheet" type="text/css" href="v2/css/custom.css">
+        <script src="cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    </head>
+    <body>
+        <div class="login-container">
+            <div class="grid">
+                <div class="left">
+                    <div class="login-header">
+                        <div class="logo"></div>
+                                                <a href="index.html" class="home">Home</a>
+                                        </div>
+                    <form action="sign-up.html" method="POST" class="login-form">
+    <input type="hidden" name="_token" value="hBwqZAT5NQATu3v84XoRJ2UPCqPcm4eRoDWByjRj">
+        <div class="first-header">
+        Become part of the JAALifestyle community.
+    </div>
+    
+    <div class="second-header">
+        Sign up
+    </div>
+    
+    <div class="inputContainer margin-t-30">
+        <input class="input" type="text" name="full_name" id="full_name" placeholder="Your full name" value="" required>
+        <div class="user-name"></div>
+    </div>
+    
+    <div class="inputContainer margin-t-30">
+        <input class="input" type="text" name="username" id="username" placeholder="Your username" value="" required>
+        <div class="user-name"></div>
+        <div class="sub-label" style="margin-top: 5px;">a - z / 0 - 9</div>
+    </div>
+    
+    <div class="inputContainer margin-t-30">
+        <input class="input" type="text" name="sponsors_username" id="sponsors_username" placeholder="Sponsor&#039;s username"  value=""  required >
+        <div class="sponsor-name"></div>
+    </div>
+    
+    <div class="inputContainer margin-t-30">
+        <input class="input" type="email" name="email" id="email" placeholder="Your email" value="" required>
+        <div class="email"></div>
+    </div>
+    <div class="inputContainer margin-t-30">
+        <input class="input" type="email" name="email_confirmation" id="email_confirmation" placeholder="Confirm Email" value="" required>
+        <div class="email"></div>
+    </div>
+    
+    <div class="inputContainer margin-t-30">
+        <select class="input" name="country" id="country" required value="" style="height:49px;">
+            <option value="">Select Country</option>
+                        <option value="1" >Afghanistan</option>
+                        <option value="2" >Albania</option>
+                        <option value="3" >Algeria</option>
+                        <option value="4" >American Samoa</option>
+                        <option value="5" >Andorra</option>
+                        <option value="6" >Angola</option>
+                        <option value="7" >Anguilla</option>
+                        <option value="8" >Antarctica</option>
+                        <option value="9" >Antigua and Barbuda</option>
+                        <option value="10" >Argentina</option>
+                        <option value="11" >Armenia</option>
+                        <option value="12" >Aruba</option>
+                        <option value="13" >Australia</option>
+                        <option value="14" >Austria</option>
+                        <option value="15" >Azerbaijan</option>
+                        <option value="16" >Bahamas</option>
+                        <option value="17" >Bahrain</option>
+                        <option value="18" >Bangladesh</option>
+                        <option value="19" >Barbados</option>
+                        <option value="20" >Belarus</option>
+                        <option value="21" >Belgium</option>
+                        <option value="22" >Belize</option>
+                        <option value="23" >Benin</option>
+                        <option value="24" >Bermuda</option>
+                        <option value="25" >Bhutan</option>
+                        <option value="26" >Bolivia</option>
+                        <option value="27" >Bosnia and Herzegovina</option>
+                        <option value="28" >Botswana</option>
+                        <option value="29" >Bouvet Island</option>
+                        <option value="30" >Brazil</option>
+                        <option value="31" >British Indian Ocean Territory</option>
+                        <option value="32" >Brunei Darussalam</option>
+                        <option value="33" >Bulgaria</option>
+                        <option value="34" >Burkina Faso</option>
+                        <option value="35" >Burundi</option>
+                        <option value="36" >Cambodia</option>
+                        <option value="37" >Cameroon</option>
+                        <option value="38" >Canada</option>
+                        <option value="39" >Cape Verde</option>
+                        <option value="40" >Cayman Islands</option>
+                        <option value="41" >Central African Republic</option>
+                        <option value="42" >Chad</option>
+                        <option value="43" >Chile</option>
+                        <option value="44" >China</option>
+                        <option value="45" >Christmas Island</option>
+                        <option value="46" >Cocos (Keeling) Islands</option>
+                        <option value="47" >Colombia</option>
+                        <option value="48" >Comoros</option>
+                        <option value="49" >Congo</option>
+                        <option value="50" >Cook Islands</option>
+                        <option value="51" >Costa Rica</option>
+                        <option value="52" >Croatia (Hrvatska)</option>
+                        <option value="53" >Cuba</option>
+                        <option value="54" >Cyprus</option>
+                        <option value="55" >Czech Republic</option>
+                        <option value="56" >Denmark</option>
+                        <option value="57" >Djibouti</option>
+                        <option value="58" >Dominica</option>
+                        <option value="59" >Dominican Republic</option>
+                        <option value="60" >East Timor</option>
+                        <option value="61" >Ecuador</option>
+                        <option value="62" >Egypt</option>
+                        <option value="63" >El Salvador</option>
+                        <option value="64" >Equatorial Guinea</option>
+                        <option value="65" >Eritrea</option>
+                        <option value="66" >Estonia</option>
+                        <option value="67" >Ethiopia</option>
+                        <option value="68" >Falkland Islands (Malvinas)</option>
+                        <option value="69" >Faroe Islands</option>
+                        <option value="70" >Fiji</option>
+                        <option value="71" >Finland</option>
+                        <option value="72" >France</option>
+                        <option value="73" >France, Metropolitan</option>
+                        <option value="74" >French Guiana</option>
+                        <option value="75" >French Polynesia</option>
+                        <option value="76" >French Southern Territories</option>
+                        <option value="77" >Gabon</option>
+                        <option value="78" >Gambia</option>
+                        <option value="79" >Georgia</option>
+                        <option value="80" >Germany</option>
+                        <option value="81" >Ghana</option>
+                        <option value="82" >Gibraltar</option>
+                        <option value="83" >Guernsey</option>
+                        <option value="84" >Greece</option>
+                        <option value="85" >Greenland</option>
+                        <option value="86" >Grenada</option>
+                        <option value="87" >Guadeloupe</option>
+                        <option value="88" >Guam</option>
+                        <option value="89" >Guatemala</option>
+                        <option value="90" >Guinea</option>
+                        <option value="91" >Guinea-Bissau</option>
+                        <option value="92" >Guyana</option>
+                        <option value="93" >Haiti</option>
+                        <option value="94" >Heard and Mc Donald Islands</option>
+                        <option value="95" >Honduras</option>
+                        <option value="96" >Hong Kong</option>
+                        <option value="97" >Hungary</option>
+                        <option value="98" >Iceland</option>
+                        <option value="99" >India</option>
+                        <option value="100" >Isle of Man</option>
+                        <option value="101" >Indonesia</option>
+                        <option value="102" >Iran (Islamic Republic of)</option>
+                        <option value="103" >Iraq</option>
+                        <option value="104" >Ireland</option>
+                        <option value="105" >Israel</option>
+                        <option value="106" >Italy</option>
+                        <option value="107" >Ivory Coast</option>
+                        <option value="108" >Jersey</option>
+                        <option value="109" >Jamaica</option>
+                        <option value="110" >Japan</option>
+                        <option value="111" >Jordan</option>
+                        <option value="112" >Kazakhstan</option>
+                        <option value="113" >Kenya</option>
+                        <option value="114" >Kiribati</option>
+                        <option value="115" >Korea, Democratic People&quot;&quot;s Republic of</option>
+                        <option value="116" >Korea, Republic of</option>
+                        <option value="117" >Kosovo</option>
+                        <option value="118" >Kuwait</option>
+                        <option value="119" >Kyrgyzstan</option>
+                        <option value="120" >Lao People&quot;&quot;s Democratic Republic</option>
+                        <option value="121" >Latvia</option>
+                        <option value="122" >Lebanon</option>
+                        <option value="123" >Lesotho</option>
+                        <option value="124" >Liberia</option>
+                        <option value="125" >Libyan Arab Jamahiriya</option>
+                        <option value="126" >Liechtenstein</option>
+                        <option value="127" >Lithuania</option>
+                        <option value="128" >Luxembourg</option>
+                        <option value="129" >Macau</option>
+                        <option value="130" >Macedonia</option>
+                        <option value="131" >Madagascar</option>
+                        <option value="132" >Malawi</option>
+                        <option value="133" >Malaysia</option>
+                        <option value="134" >Maldives</option>
+                        <option value="135" >Mali</option>
+                        <option value="136" >Malta</option>
+                        <option value="137" >Marshall Islands</option>
+                        <option value="138" >Martinique</option>
+                        <option value="139" >Mauritania</option>
+                        <option value="140" >Mauritius</option>
+                        <option value="141" >Mayotte</option>
+                        <option value="142" >Mexico</option>
+                        <option value="143" >Micronesia, Federated States of</option>
+                        <option value="144" >Moldova, Republic of</option>
+                        <option value="145" >Monaco</option>
+                        <option value="146" >Mongolia</option>
+                        <option value="147" >Montenegro</option>
+                        <option value="148" >Montserrat</option>
+                        <option value="149" >Morocco</option>
+                        <option value="150" >Mozambique</option>
+                        <option value="151" >Myanmar</option>
+                        <option value="152" >Namibia</option>
+                        <option value="153" >Nauru</option>
+                        <option value="154" >Nepal</option>
+                        <option value="155" >Netherlands</option>
+                        <option value="156" >Netherlands Antilles</option>
+                        <option value="157" >New Caledonia</option>
+                        <option value="158" >New Zealand</option>
+                        <option value="159" >Nicaragua</option>
+                        <option value="160" >Niger</option>
+                        <option value="161" >Nigeria</option>
+                        <option value="162" >Niue</option>
+                        <option value="163" >Norfolk Island</option>
+                        <option value="164" >Northern Mariana Islands</option>
+                        <option value="165" >Norway</option>
+                        <option value="166" >Oman</option>
+                        <option value="167" >Pakistan</option>
+                        <option value="168" >Palau</option>
+                        <option value="169" >Palestine</option>
+                        <option value="170" >Panama</option>
+                        <option value="171" >Papua New Guinea</option>
+                        <option value="172" >Paraguay</option>
+                        <option value="173" >Peru</option>
+                        <option value="174" >Philippines</option>
+                        <option value="175" >Pitcairn</option>
+                        <option value="176" >Poland</option>
+                        <option value="177" >Portugal</option>
+                        <option value="178" >Puerto Rico</option>
+                        <option value="179" >Qatar</option>
+                        <option value="180" >Reunion</option>
+                        <option value="181" >Romania</option>
+                        <option value="182" >Russian Federation</option>
+                        <option value="183" >Rwanda</option>
+                        <option value="184" >Saint Kitts and Nevis</option>
+                        <option value="185" >Saint Lucia</option>
+                        <option value="186" >Saint Vincent and the Grenadines</option>
+                        <option value="187" >Samoa</option>
+                        <option value="188" >San Marino</option>
+                        <option value="189" >Sao Tome and Principe</option>
+                        <option value="190" >Saudi Arabia</option>
+                        <option value="191" >Senegal</option>
+                        <option value="192" >Serbia</option>
+                        <option value="193" >Seychelles</option>
+                        <option value="194" >Sierra Leone</option>
+                        <option value="195" >Singapore</option>
+                        <option value="196" >Slovakia</option>
+                        <option value="197" >Slovenia</option>
+                        <option value="198" >Solomon Islands</option>
+                        <option value="199" >Somalia</option>
+                        <option value="200" >South Africa</option>
+                        <option value="201" >South Georgia South Sandwich Islands</option>
+                        <option value="202" >Spain</option>
+                        <option value="203" >Sri Lanka</option>
+                        <option value="204" >St. Helena</option>
+                        <option value="205" >St. Pierre and Miquelon</option>
+                        <option value="206" >Sudan</option>
+                        <option value="207" >Suriname</option>
+                        <option value="208" >Svalbard and Jan Mayen Islands</option>
+                        <option value="209" >Swaziland</option>
+                        <option value="210" >Sweden</option>
+                        <option value="211" >Switzerland</option>
+                        <option value="212" >Syrian Arab Republic</option>
+                        <option value="213" >Taiwan</option>
+                        <option value="214" >Tajikistan</option>
+                        <option value="215" >Tanzania, United Republic of</option>
+                        <option value="216" >Thailand</option>
+                        <option value="217" >Togo</option>
+                        <option value="218" >Tokelau</option>
+                        <option value="219" >Tonga</option>
+                        <option value="220" >Trinidad and Tobago</option>
+                        <option value="221" >Tunisia</option>
+                        <option value="222" >Turkey</option>
+                        <option value="223" >Turkmenistan</option>
+                        <option value="224" >Turks and Caicos Islands</option>
+                        <option value="225" >Tuvalu</option>
+                        <option value="226" >Uganda</option>
+                        <option value="227" >Ukraine</option>
+                        <option value="228" >United Arab Emirates</option>
+                        <option value="229" >United Kingdom</option>
+                        <option value="230" >United States</option>
+                        <option value="231" >United States minor outlying islands</option>
+                        <option value="232" >Uruguay</option>
+                        <option value="233" >Uzbekistan</option>
+                        <option value="234" >Vanuatu</option>
+                        <option value="235" >Vatican City State</option>
+                        <option value="236" >Venezuela</option>
+                        <option value="237" >Vietnam</option>
+                        <option value="238" >Virgin Islands (British)</option>
+                        <option value="239" >Virgin Islands (U.S.)</option>
+                        <option value="240" >Wallis and Futuna Islands</option>
+                        <option value="241" >Western Sahara</option>
+                        <option value="242" >Yemen</option>
+                        <option value="243" >Zaire</option>
+                        <option value="244" >Zambia</option>
+                        <option value="245" >Zimbabwe</option>
+                    </select>
+    </div>
+    
+    <div class="inputContainer margin-t-30 hidden" id="state_control">
+        <select class="input" name="state" id="state" value="" style="height:49px;">
+            <option value="">Select State</option>
+                        <option value="1" >Alabama</option>
+                        <option value="2" >Alaska</option>
+                        <option value="3" >American Samoa</option>
+                        <option value="4" >Arizona</option>
+                        <option value="5" >Arkansas</option>
+                        <option value="6" >California</option>
+                        <option value="7" >Colorado</option>
+                        <option value="8" >Connecticut</option>
+                        <option value="9" >Delaware</option>
+                        <option value="10" >District Of Columbia</option>
+                        <option value="11" >Federated States Of Micronesia</option>
+                        <option value="12" >Florida</option>
+                        <option value="13" >Georgia</option>
+                        <option value="14" >Guam</option>
+                        <option value="15" >Hawaii</option>
+                        <option value="16" >Idaho</option>
+                        <option value="17" >Illinois</option>
+                        <option value="18" >Indiana</option>
+                        <option value="19" >Iowa</option>
+                        <option value="20" >Kansas</option>
+                        <option value="21" >Kentucky</option>
+                        <option value="22" >Louisiana</option>
+                        <option value="23" >Maine</option>
+                        <option value="24" >Marshall Islands</option>
+                        <option value="25" >Maryland</option>
+                        <option value="26" >Massachusetts</option>
+                        <option value="27" >Michigan</option>
+                        <option value="28" >Minnesota</option>
+                        <option value="29" >Mississippi</option>
+                        <option value="30" >Missouri</option>
+                        <option value="31" >Montana</option>
+                        <option value="32" >Nebraska</option>
+                        <option value="33" >Nevada</option>
+                        <option value="34" >New Hampshire</option>
+                        <option value="35" >New Jersey</option>
+                        <option value="36" >New Mexico</option>
+                        <option value="37" >New York</option>
+                        <option value="38" >North Carolina</option>
+                        <option value="39" >North Dakota</option>
+                        <option value="40" >Northern Mariana Islands</option>
+                        <option value="41" >Ohio</option>
+                        <option value="42" >Oklahoma</option>
+                        <option value="43" >Oregon</option>
+                        <option value="44" >Palau</option>
+                        <option value="45" >Pennsylvania</option>
+                        <option value="46" >Puerto Rico</option>
+                        <option value="47" >Rhode Island</option>
+                        <option value="48" >South Carolina</option>
+                        <option value="49" >South Dakota</option>
+                        <option value="50" >Tennessee</option>
+                        <option value="51" >Texas</option>
+                        <option value="52" >Utah</option>
+                        <option value="53" >Vermont</option>
+                        <option value="54" >Virgin Islands</option>
+                        <option value="55" >Virginia</option>
+                        <option value="56" >Washington</option>
+                        <option value="57" >West Virginia</option>
+                        <option value="58" >Wisconsin</option>
+                        <option value="59" >Wyoming</option>
+                    </select>
+    </div>
+
+    <div class="inputContainer margin-t-30" style="display: flex">
+        <input pattern="[0-9()+]+" class="input" type="text" name="phone" id="phone" placeholder="Phone Number" value="" minlength="6" required>
+        <div class="phone-number"></div>
+    </div>
+    
+    <div class="inputContainer margin-t-30">
+        <input class="input" type="text" name="dob" id="dob" placeholder="Date of Birth (dd/mm/yyyy)" value="" minlength="10" required>
+        <div class="dob"></div>        
+    </div>
+    
+    <div class="inputContainer margin-t-20">
+        <input class="input" type="password" name="password" id="password" placeholder="Password" minlength="6" value="" required>
+        <div class="password"></div>
+        <div class="password-mask password-mask-url" id="password_mask"></div>
+    </div>
+    
+    <div class="inputContainer margin-t-20">
+        <input class="input" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" minlength="6" value="" required>
+        <div class="password"></div>
+        <div class="password-mask password-mask-url" id="confirm_password_mask"></div>
+    </div>
+
+    <div class="inputContainer margin-t-20">
+        <input type="checkbox" id="terms" name="terms" value="1"  style="height:15px;">
+        I accept the Terms and Conditions
+    </div>
+
+    <div class="inputContainer margin-t-20">
+        <input type="checkbox" id="privacy" name="privacy" value="1"  style="height:15px;">
+        I accept the Privacy Policy
+    </div>
+
+    
+    <div class="buttons">
+        <button type="submit" class="login" style="margin-bottom: 10px;">
+            Sign Up
+        </button>
+    </div>
+    
+    <div class="subtext">
+        Please check your spam folder incase you did not receive an email verification within 24 hours. By signing up you accept our <span class="text-style"><u><a href="#terms-modal" id="terms-modal-trigger" class="pp-tos">Terms & Conditions</a></u></span> and <span class="text-style"><u><a href="#privacy-modal" id="privacy-modal-trigger" class="pp-tos">Privacy Policy</a></u></span>
+    </div>
+
+    <div class="margin-t-30" style="text-align: center; width: 100%; margin-bottom: 50px; font-size: 1.4rem;">
+        Already have an account? <a href="login.html">Login</a>
+    </div>
+    <div id="privacy-modal" style="display: none;">
+        <h3 data-hey-title>Privacy Policy</h3>
+        <div data-hey-body>
+            <p>Your privacy is important to jaalifestyle.com and The Service is owned and operated by JAA Lifestyle. Please read this notice carefully for information relating to jaalifestyle.com operated by JAA Lifestyle.’s collection, use, and disclosure of your personal information.</p>
+<p>By using the jaalifestyle.com service operated by JAA Lifestyle, you consent to receiving certain electronic communications from us as further described in our Privacy Policy. Please read our Privacy Policy to learn more about your choices regarding our electronic communications practices. You agree that any notices, agreements, disclosures, or other communications that we send to you electronically will satisfy any legal communication requirements, including that such communications be in writing.</p>
+<br>
+<p><strong>INFORMATION COLLECTED AND HOW IT IS USED</strong></p>
+<p>The information and data about you which we may collect, use and process includes the following:</p>
+<ul>
+    <li>1. information that you provide to us by filling in forms on the Website or any other information you submit to us via the Website or email;</li>
+    <li>2. records of correspondence, whether via the Website, email, telephone or other means;</li>
+    <li>3. your responses to surveys or customer research that we carry out;</li>
+    <li>4. details of the transactions you carry out with us, whether via the Website, telephone or other means; and</li>
+    <li>5. details of your visits to the Website including, but not limited to, traffic data, location data, weblogs and other communication data. We may use your personal information and data together with other information for the purposes of:</li>
+    <ul>
+        <li>1. processing, card and on-line payments;</li>
+        <li>2. setting up, operating and managing your account;</li>
+        <li>3. complying with our legal and regulatory duties;</li>
+        <li>4. providing you with information about promotional offers and our products and services, where you have consented; and</li>
+        <li>5. monitoring transactions for the purposes of preventing fraud, money laundering and cheating.</li>
+    </ul>
+</ul>
+<br>
+<p><strong>TRAFFIC DATA</strong></p>
+<p>Your IP address is a numeric address assigned to your computer, assigned by your Internet service provider. We automatically collect your IP address as traffic data so that we can send information back to you when requested. This is not used to identify your personal information.</p>
+<p>Referrers are references to the web address you linked from and is automatically passed along by your web browser. We collect referrers your browser sends as part of traffic data. This is not attached to personally identifiable information. System information such as your operating system/platform, and the type of web browser you use. This is not attached to personally identifiable information.</p>
+<br>
+<p><strong>INFORMATION STORAGE</strong></p>
+<p>We will take all reasonable steps to ensure that your information is kept secure and protected. We will only disclose personal information to other companies within associated or subsidiary companies and to business partners of jaalifestyle.com operated by JAA Lifestyle . We may also make enquiries of, and disclose details of how you conduct your account to, such agencies, security organisations and any other relevant third parties for fraud and money laundering prevention.</p>
+<p>Using the internet to collect and process Information necessarily involves the transmission of Information on an international basis. Some third-party processors we engage to process Information on our behalf may be based outside the European Economic Area ("EEA"). Therefore, by browsing our Websites and communicating electronically with us, you acknowledge and agree to the transmission and processing of your Information outside the EEA in this way. Countries outside the EEA do not always have strong data protection laws. However, we will always take all steps reasonably necessary to ensure that your Information is used by third party processors securely and in accordance with this policy. Except where we engage third parties to process your Information on our behalf, we will not disclose or sell your Information outside jaalifestyle.com operated by JAA Lifestyle , except in connection with a joint venture or the proposed or actual sale of the whole or part of jaalifestyle.com operated by JAA Lifestyle  ' business. Unless required to do so by law, we will not otherwise share, sell or distribute any of the Information you provide to us without your consent.</p>
+<br>
+<p><strong>USE OF COOKIES</strong></p>
+<p>We may use cookies as a means of collecting information from a web server for the above purposes following a customer's use of the Website. If you register with us or if you continue to use the Website, you agree to our use of cookies.</p>
+<p>Cookies contain information that is transferred to your computer's hard drive. They help us to improve the Website and to deliver a better and more personalized service. Some of the cookies we use are essential for the Website to operate.</p>
+<p>If you want to delete any cookies already stored on your computer or stop the cookies that keep track of your browsing patterns on the Website, you can do so by deleting your existing cookies and/or altering your browser's privacy settings to block cookies (the process you follow will differ from browser to browser). If you would like more information on how to do this, please visit www.allaboutcookies.org. Please note that deleting our cookies or disabling our future cookies means that you may not be able to access certain areas or features of the Website.</p>
+<br>
+<p><strong>TELEPHONE CALLS</strong></p>
+<p>Telephone calls to and from our Customer Contact Centre may be recorded for training and security purposes along with the resolution of any queries arising from the service you receive.</p>
+<br>
+<p><strong>LINKS</strong></p>
+<p>This Web site may, from time to time, contain links to and from the websites of our partner networks, advertisers and affiliates. Please be aware that we, jaalifestyle.com operated by JAA Lifestyle , are not responsible for the privacy practices of such other sites. We encourage our visitors to be aware when they leave our site and to read the Privacy Policy/website Terms of Use of each and every web site that collects personally identifiable information. Please check such policies before you submit any Information to them. This privacy statement applies solely to information collected by this Web site.</p>
+<br>
+<p><strong>SECURITY AND PRIVACY</strong></p>
+<p>We employ security measures to protect your Information from access by unauthorized persons and to prevent unlawful processing, accidental loss, destruction and damage. Protection of your Information, including your registration details and any debit or credit card information you provide to us, is a priority for us. Data on our secure pages is encrypted using Secure Sockets Layer ("SSL") technology. Where we have given you (or where you have chosen) a password which enables you to access certain parts of our Websites, you are responsible for keeping this password confidential.</p>
+<p>Any personal information which identifies you will be encrypted at all times whilst in transit over the internet. SSL is special protocol that automatically encrypts any information sent by you on our secure pages. Our server then reads the information using a private key. This means that your Information, be it debit or credit card information or any other personal details, is turned into a code that can only be decoded with the private key or password, protecting your Information.</p>
+<p>Unfortunately, the transmission of Information via the internet is not completely secure. Although jaalifestyle.com operated by JAA Lifestyle  will do its best to protect your Information as described in the paragraphs above, it cannot guarantee the security of any Information that you disclose online. You accept the inherent security implications of using the internet and will not hold us responsible for any breach of security unless we have been negligent. For your own privacy protection, we encourage you not to include sensitive Information (such as credit/debit card numbers) in any emails you may send to us.</p>
+<br>
+<p><strong>RETENTION AND DISPOSAL</strong></p>
+<p>It is our policy to retain and make available financial information for a period of 7 years. Other Information will be retained for the period necessary to fulfil all obligations that is required and/or permitted by applicable law. We will take all reasonable steps to ensure that the privacy of Information is maintained on disposal.</p>
+<br>
+<p><strong>CHANGES TO OUR POLICY</strong></p>
+<p>We may modify this policy from time to time. If we decide to change our privacy policy, we will post those changes to this privacy statement, the homepage, and other places we deem appropriate so our visitors are always aware of what information we collect, how we use it, and under what circumstances, if any, we disclose it.</p>
+<br>
+<p><strong>ACCURACY AND ACCESS TO INFORMATION</strong></p>
+<p>We will take all reasonable steps to ensure that any Information that we collect from you is accurate and has been verified.</p>
+<p>You are entitled to see the Information held about you and you may ask us to make any necessary changes to ensure that it is accurate and kept up to date. We are entitled by law to make a small administrative charge for providing such Information.</p>
+<p>All comments, queries and requests relating to our use of your Information are welcome and should be made in writing or by telephone via the Contact Us section on the Websites.</p>
+        </div>
+    </div>
+    <div id="terms-modal" style="display: none;">
+        <h3 data-hey-title>Terms of Service</h3>
+        <div data-hey-body>
+            <p><h1>TERMS OF SERVICE</h1></p>
+<p>Welcome to JAA Lifestyle!</p>
+
+<p><small>The jaalifestyle.com Service is owned and operated by JAA LIFESTYLE LIMITED 
+<br>
+Registration number: 12752286
+<br>
+Address: 37th Floor  One Canada Square , London  England,  E145AB
+</small></p>
+
+<h2>Eligibility and Assent to Terms</h2>
+<p>
+	The following Terms and Conditions for the jaalifestyle.com website, software applications made available by jaalifestyle.com operated by JAA Lifestyle from the website or via a third party ( “Software” ), and any application programming interface (“API” ) or other technology or services made available by jaalifestyle.com operated by JAA Lifestyle via the website or Software (collectively, “jaalifestyle.com” ) is a legal contract between you, either an individual of at least 18 years of age or a single entity ( “You” or, collectively, “Users” ), and jaalifestyle.com regarding your use of the jaalifestyle.com Service (“Terms”). <br>
+	You acknowledge that you have read understood, and agree to be bound by these terms, including any future modifications. If at any time, you do not agree to these terms, please immediately terminate your use of the jaalifestyle.com system. <br>
+	If you are using or opening an account with jaalifestyle.com on behalf of a company, entity, or organization (collectively, a “subscribing organization”) then you represent and warrant that you are an authorized representative of that subscribing organization with the authority to bind such organization to these terms and agree to these terms on behalf of such subscribing organization.
+	By clicking the “I agree” button or by downloading, installing or otherwise using any portion of the jaalifestyle.com service, you assent to and agree to be bound by these terms and represent that you are at least 18 years of age and have not been previously removed from the jaalifestyle.com service.
+</p>
+
+<h3>1. MODIFICATION</h3>
+We reserve the right, at our discretion, to change these Terms on a going-forward basis at any time. Please check these Terms periodically for changes. In the event that a change to these Terms materially modifies your rights or obligations, you will be required to accept such modified terms in order to continue to use the Service. Material modifications are effective upon your acceptance of such the modified Terms. Immaterial modifications are effective upon publication. For the avoidance of doubt, disputes arising under these Terms will be resolved in accordance with these Terms in effect that the time the dispute arose.
+<br>
+<br>
+
+<h3>2. PRIVACY</h3>
+Please review our Privacy Notice, which also governs your use of jaalifestyle.com, to understand our practices.
+<br>
+<br>
+
+<h3>3. FEES AND PAYMENT</h3>
+a. Some portions of the JAA Lifestyle Service may have fees associated with them (each, a “Paid Service”). You will have the opportunity to review and accept the fees that you will be charged before using a Paid Service. We may change fees for any portion of the JAA Lifestyle Service at any time. Unless otherwise stated, all fees are quoted in Euro.
+b. You are solely responsible for paying all fees and applicable taxes associated with your JAA Lifestyle Service account in a timely manner with a valid payment method. By electing to purchase or otherwise use a Paid Service, you authorize JAA Lifestyle or its third-party payment processors to charge the credit card or other payment method identified by you (“Payment Method), which you represent and warrant that you are authorized to use, all applicable fees for that Paid Service, including all applicable taxes. For purchases of one-time Paid Services (i.e., not subscriptions), your Payment Method will be billed for that Paid Service on the date that you make the purchase.
+<br><br>
+
+jaalifestyle.com is a subscription service.  c. Applicable purchases of subscriptions to Paid Services:  Your "Subscription Billing Date” is the date when you purchase your first subscription to a Paid Service. For example, if you purchase your first subscription to a Paid Service on January 10th: (1) your Subscription Billing Date for your first monthly subscription and all other monthly subscriptions you purchase is the 10th of each month, (2) your Subscription Billing Date for your first annual subscription is January 10th of each year, and (3) your Subscription Billing Date for all subsequent purchases of annual subscriptions will be the next soonest 10th monthly calendar day after your date of purchase. Your Payment Method will be charged automatically on the Subscription Billing Date all applicable fees for the next month or year, as applicable. For any subscription to a Paid Service that you purchase after your Subscription Billing Date is established, your Payment Method will first be charged a pro-rata amount of the subscription fee for the number of days between the purchase date and the applicable Subscription Billing Date. Your Payment Method will then be charged the full periodic subscription fee for the next month or year, as applicable, on each Subscription Billing Date thereafter (or on the last day of the calendar month, if the last day of the calendar month occurs before the Subscription Billing Date for that month). <br>
+d. For any subscription to a Paid Service, that subscription will continue unless and until you cancel your subscription, or we terminate it. You must cancel your subscription before it renews to avoid billing of the next period's (i.e., month’s or year’s) subscription fees to your Payment Method. We will bill the periodic subscription fee to the Payment Method you provide to us during registration (or to a different Payment Method if you change your account information). <br>
+e. You acknowledge and agree that any credit card and related billing and payment information that you provide to JAA Lifestyle may be shared by JAA Lifestyle with companies who work on JAA Lifestyle behalf, such as payment processors or credit agencies, solely for the purpose of checking credit, effecting payment to JAA Lifestyle and servicing your account. The terms of your payment will be based on your chosen Payment Method and may be determined by agreements between you and the financial institution providing such Payment Method. For certain Payment Methods, the issuer of your Payment Method may charge you a foreign transaction fee or related charges. Check with your bank and credit card issuers for details. If your Payment Method for any Paid Service fails or your account is past due, (i) you agree to pay all amounts due on your JAA Lifestyle account upon demand, (ii) JAA Lifestyle may collect fees owed using other collection mechanisms (this includes charging other payment methods on file with us) and (iii) JAA Lifestyle reserves the right to either suspend or terminate your access to one or more JAA Lifestyle Services or your account with JAA Lifestyle. Upon any such termination, you will remain obligated to pay all outstanding fees and charges relating to your account and your use of the JAA Lifestyle Service before termination.
+<br><br>
+
+<h3>4. DIGITAL MILLENNIUM COPYRIGHT ACT</h3>
+It is JAA Lifestyle policy to respond to notices of alleged copyright infringement that comply with the Digital Millennium Copyright Act. For more information, please go to JAA Lifestyle's DMCA Notification Guidelines, and we will promptly terminate without notice any User's access to our Service if that User is determined by JAA Lifestyle to be a “repeat infringer.” A repeat infringer is a User who has been notified by us of infringing activity violations more than twice or who has had a User Submission, or any other user-submitted content removed from the JAA Lifestyle Service more than twice. “User Submission” as used in these Terms means the upload and distribution of authorized digital content by a User of the JAA Lifestyle Service.
+<br><br>
+
+<h3>5. PERMISSION TO USE JAA LIFESTYLE SERVICE</h3>
+a. Subject to your compliance with the terms and conditions set out in these Terms, JAA Lifestyle hereby grants to you a personal, limited, non-exclusive, non-transferable, freely revocable license to: (i) use the JAA Lifestyle Service to view, use and access User Submissions and other content made available via the JAA Lifestyle Service; (ii) participate in any other programs, services, or features of the JAA Lifestyle Service now or hereafter made available by JAA Lifestyle including uploading of your User Submissions; (iii) download and install Software on the mobile device for which the Software was created to exercise the rights granted in Sections 6(i) and 6(ii); and (iv) implement any API made available by JAA Lifestyle solely in accordance with that API’s documentation. Your use of the JAA Lifestyle Service must be for personal, non-commercial use only, except (A) Users that are commercial entities may use the JAA Lifestyle Service to make their User Submissions available on the JAA Lifestyle Service as contemplated in these Terms or to integrate the JAA Lifestyle Service with the User’s website; and (B) Users may participate in programs made available by JAA Lifestyle to receive financial remuneration related to their User Submissions. For the avoidance of doubt, you are not entitled to any compensation from JAA Lifestyle for any User Submissions for any reason unless otherwise specifically agreed in writing by JAA Lifestyle.
+b. You agree not to use or launch any automated system, including without limitation “robots,” “spiders,” and “offline readers,” that accesses the JAA Lifestyle Service in a manner that sends more request messages to the JAA Lifestyle Service in a given period of time than a human can reasonably produce in the same period by using a conventional web browser or otherwise use the JAA Lifestyle Service to collect or harvest any personally identifiable information or any data regarding activities on or usage of the JAA Lifestyle Site. <br>
+c. You also agree that for any API made available by JAA Lifestyle: (i) JAA Lifestyle makes no representations or warranties whatsoever regarding any API or any quality of service available via any API; (ii) JAA Lifestyle may restrict usage limits; (iii) you will not modify any content accessed via that API; (iv) JAA Lifestyle may terminate or deprecate any service or functionality available via an API at any time without notice or liability; and (v) use of some APIs may require obtaining an API key from JAA Lifestyle and JAA Lifestyle may disable any key at any time without notice or liability. <br>
+d. JAA Lifestyle reserves all rights not expressly granted in these Terms. You acknowledge that JAA Lifestyle may automatically issue upgraded versions of the software and systems comprising the JAA Lifestyle Service and, accordingly, may upgrade the version of the JAA Lifestyle Service that you are using. JAA Lifestyle reserves the right to exercise whatever lawful means it deems necessary to prevent unauthorized use of the JAA Lifestyle Service, including technological barriers, IP mapping, and directly contacting your Internet Service Provider (ISP) regarding such unauthorized use.
+<br><br>
+
+<h3>6. Delivery POLICY</h3>
+There are no delivery fees on all our subscriptions. The subscription prices for the magazines, packages and subscriptions are listed on jaalifestyle.com. When you are creating your Subscription, you will provide payment information in accordance with the instructions on the Website and in Paragraph 3 Terms and Service. Payment shall be made through the payment methods offered by jaalifestyle.com <br>
+Our Magazines are monthly subscriptions for our Virtual Magazine(s). And once your payment for the subscription of our Virtual Magazine(s) has been processed and approved, the delivery and access to your magazine and to download your own monthly magazine will be available. You will then receive and have access to your download link within your account in jaalifestyle.com. <br>
+To access your digital issue subscribed from JAA Lifestyle website, you’ll need to log into your account at jaalifestyle.com Once you’ve logged in, see the heading “ACCOUNT”, then “OVERVIEW”, and then you’ll see all your available downloads on the left side: “MY AVAILABLE MAGAZINES”!<br>
+If you experience delivery delays, difficulties to download your new Magazines or other difficulties to access your Magazines, please share this information with us as soon as possible to our Customer Support Team and we will assist you. If you have not been able to get a satisfactory downloaded magazine quality, please contact us and we will use all reasonable efforts to make sure that your concerns are dealt with.
+<br><br>
+
+<h3>7. USER SUBMISSIONS</h3>
+a. By uploading User Submissions to the JAA Lifestyle Service, you hereby grant to JAA Lifestyle a worldwide, non-exclusive, transferable, assignable, fully paid-up, royalty-free, license to host, transfer, display, perform, reproduce, distribute, and otherwise exploit your User Submissions, in any media forms or formats, and through any media channels, now known or hereafter devised, including without limitation, RSS feeds, embeddable functionality, and syndication arrangements in order to distribute, promote or advertise your User Submissions through the JAA Lifestyle Service. This license includes the right for JAA Lifestyle to convert your User Submissions to JAA Lifestyle’s proprietary format, or such other file formats as may be used by JAA Lifestyle and to display and make your User Submissions available, in whole or in part (including excerpts), on the JAA Lifestyle Service in association with other User Submissions, content or advertising. Subject to the license grant to other Users below, the license granted by you to JAA Lifestyle in this paragraph terminates as to a specific User Submission once you remove or delete such User Submission from the JAA Lifestyle Service. <br>
+b. Users may have the option of specifying access settings for User Submissions. If you select access settings for your User Submissions, by uploading User Submissions to the JAA Lifestyle Service, you hereby grant to each User that is authorized to access your User Submissions a non-exclusive license to access and use your User Submissions under the terms selected by you. If you did not specify access settings for your User Submissions, you hereby grant to each User that is authorized to access your User Submissions a non-exclusive, perpetual, irrevocable, license to access and use such User Submission through the JAA Lifestyle Service, and to use, reproduce, publish, prepare derivative works of, display and perform those User Submissions as enabled by the functionality of the JAA Lifestyle Service. The foregoing license granted by you is modified to reflect your preferences, or terminated, as to a specific User Submission, once you modify the access settings or any other such options pertaining such User Submission or remove or delete such User Submission from the JAA Lifestyle Service. The foregoing is subject to the right of Users who have downloaded a User Submission to retain the downloaded or printed copy or copies. Such User will retain any rights originally granted upon that download of the User Submission. Please be aware that while JAA Lifestyle uses commercially reasonable efforts to respect the access settings specified by you, JAA Lifestyle does not guarantee any confidentiality or privacy with respect to any User Submission. <br>
+c. You are solely responsible for all your User Submissions and you hereby recognize and affirm that the JAA Lifestyle Service is merely providing you the means to make available your User Submissions. Accordingly, you shall be solely responsible for each of your User Submissions and the consequences of posting or publishing them. By uploading your User Submissions, you affirm, represent, and warrant that: (1) you are the creator and owner of or have the necessary licenses, rights, consents, and permissions to use and to authorize JAA Lifestyle and JAA Lifestyle's Users to use and distribute your User Submissions as necessary to exercise the licenses granted by you in this section and in the manner contemplated by JAA Lifestyle and these Terms; (2) your User Submissions do not and will not: (i) infringe, violate, or misappropriate any third-party right, including any copyright, trademark, patent, trade secret, moral right, privacy right, right of publicity, or any other intellectual property or proprietary right or (ii) slander, defame, libel, or invade the right of privacy, publicity or other property rights of any other person; and (ii) your User Submissions do not contain any viruses, adware, spyware, worms, or other malicious code or any content or file that provides a method to access to potentially infringing content outside of the JAA Lifestyle Service. Violators of these third-party rights may be subject to criminal and civil liability. JAA Lifestyle reserves all rights and remedies against any Users who violate these Terms. <br>
+d. Although JAA Lifestyle has no obligation to screen, edit, or monitor any User Submissions, JAA Lifestyle reserves the right, and has absolute discretion, to remove, screen, edit, or disable any User Submission at any time and for any reason without notice. <br>
+e. Further, you understand that when using the JAA Lifestyle Service you will be exposed to User Submissions from a variety of sources, and that JAA Lifestyle is not responsible for the accuracy, content, usefulness, or intellectual property rights of or relating to such User Submissions. You further understand and acknowledge that you may be exposed to User Submissions that are inaccurate, offensive, indecent or objectionable, and you agree to waive, and hereby do waive, any legal or equitable rights or remedies you have or may have against JAA Lifestyle with respect thereto. JAA Lifestyle does not endorse any User Submissions or any opinion, recommendation or advice expressed in any User Submission, and JAA Lifestyle expressly disclaims any and all liability in connection with User Submissions. If notified by a User or a content owner of a User Submission that allegedly does not conform to these Terms, JAA Lifestyle may investigate the allegation and determine in its sole discretion whether to remove the User Submission, which it reserves the right to do at any time and without notice. For clarity, JAA Lifestyle does not permit copyright infringing activities on the JAA Lifestyle Service.
+<br><br>
+
+<h3>8. DOCUMENT PROMOTION</h3>
+a. JAA Lifestyle may provide you the opportunity to promote your User Submissions (“Promoted Documents”). A “Promotion” is a User Submission consisting of information about a Promoted Document created in part by you and in part by automated means. Each Promotion consists of, but is not limited to, a title, body text, and a thumbnail. The thumbnail is automatically created from the Promoted Document. The title and body text is entered by you. JAA Lifestyle reserves the right to change how Promotions are created without notice. <br><br>
+b. Your Promotion will automatically be placed based upon the targeting parameters and maximum auction bid price specified by you, but JAA Lifestyle does not make any representation, warranty, or other commitment of any kind regarding Promotions, including placement or bid price. If you wish to promote a User Submission with an adult theme, you must use the targeting options to limit the availability of that Promotion to persons who are at least 18 years of age. <br><br>
+c. In addition to the representations and warranties you make above with respect to your Promoted Documents as User Submissions, you also represent and warrant with respect to each of your Promotions that: <br>
+i. your Promotions adhere to community standards of decency and good taste<br>
+ii. all statements contained in your Promotions are true, accurate and non-misleading; <br>
+iii. you will disclose clearly and conspicuously that you have been paid or provided benefits with your Promotions and Promoted Documents if that is the case; <br>
+iv. your Promotions and Promoted Documents do not include any personally identifiable information of third parties without such party’s permission; <br>
+v. neither the title nor body text in any Promotion contain a URL unless otherwise requested; <br>
+vi. the title and body text in your Promotions accurately describe or indicate the content in the Promoted Document; <br>
+vii. your Promotions do not contain content that infringes upon the rights of any third party, including its copyrights, trademarks, privacy, or publicity rights; <br>
+viii. the title and body text in your Promotions do not reference JAA Lifestyle and do not utilize any logos or trademarks of JAA Lifestyle; <br>
+ix. the title and body text in your Promotions do not contain false, misleading, fraudulent, deceptive, inaccurate or unsubstantiated claims; <br>
+x. your Promotions comply with any and all codes, laws, and regulations regarding advertising or promotion in your locality; <br>
+xi. your Promotions do not insult, threaten or harass any person; and <br>
+xii. your Promotions do not contain: (A) offensive, profane, obscene, vulgar or inappropriate language, including language describing in a negative way or attacking persons (either as a group or individually) on the basis of their race, nationality, religion, gender, or sexual orientation or any other hate speech or terroristic speech; (B) obscene, defamatory or libelous content; (C) unlawful content, including content that encourages unlawful activity; (D) sexually explicit or sexually suggestive content, including pornographic material, “adult friend finders” or dating sites with a sexual emphasis, “adult” toys or sexually explicit videos; or (E) advertisements for any of the following: alcoholic beverages, contests, raffles, or sweepstakes (please obtain written permission from JAA Lifestyle before promoting contents, raffles, or sweepstakes on JAA Lifestyle), firearms (including “bb” guns and paintball guns) or related products, including ammunition for such firearms, gambling websites, including online casinos and sports “books”, surveillance equipment, including “spy” cameras and “bugging” devices, tobacco products, or weapons of any kind. <br><br>
+d. JAA Lifestyle may reject, refuse to publish, or remove from the JAA Lifestyle Service any Promotion or Promoted Document at any time for any reason, including failure to comply with these Terms or if, in JAA Lifestyle’s sole discretion, JAA Lifestyle determines that the business model, business practice, or service promoted by the Promotion or the Promoted Document is inappropriate or contrary to the letter or spirit of these Terms. Such prohibited business practices include chain letters, fraudulent or bad-faith “get-rich-quick” or “work from home” schemes, fraudulent or bad-faith web-based colleges or universities, fraudulent or misleading subscription services, pharmaceutical products, pyramid schemes, and sites that install malware, spyware or other software on users’ computers without their permission.
+<br><br>
+
+<h3>9. INTEGRATED SERVICES AND LINKED SITES</h3>
+JAA Lifestyle may provide tools through the JAA Lifestyle Service that enable you to export information to Integrated Services, including through features that allow you to link your JAA Lifestyle account with an account on the Integrated Service, such as Facebook or Twitter, or through implementation of third party buttons (such as “like” or “share” buttons). By using these tools, you agree that we may transfer that information to the applicable Integrated Service. In addition, the JAA Lifestyle Service may include links or references to other web sites or services solely as a convenience to Users (“Linked Sites”). JAA Lifestyle does not endorse any such Integrated Services or Linked Sites or the information, materials, products, or services contained on or accessible through any of them. Such third-party sites and services are not under JAA Lifestyle’s control, and JAA Lifestyle is not responsible for their use of exported information. Your correspondence or business dealings with, or participation in promotions of, advertisers found on or through the JAA Lifestyle Service are also solely between you and such advertiser. Access and use of Integrated Services and Linked Sites, including the information, materials, products, and services on or available through them, is solely at your own risk.
+<br><br>
+
+<h3>10. SUBSCRIPTION PACKAGE BENEFITS</h3>
+We will in the future offer a range of different Subscription packages to suit our Users. Subscription packages and the individual compensation plan may vary according to the level of the individual Subscription package. Details of the current Subscription packages available are published on our Website. We reserve the right to change the benefits that apply to jaalifestyle.com Subscription packages at any time without prior notice. Please always follow and see the latest information, updates and changes concerning the packages and the subscription on the website. <br>
+If there are any changes in these Terms regarding the Subscription packages, then there are no changes backwards regarding the benefits, compensations or in the subscription packages you already have received.  jaalifestyle.com will provide you with different levels of individual packages and Subscription packages:  As a jaalifestyle.com User you will receive a wide range of benefits.  Please ensure that you carefully inform, familiarize and keep yourself fully updated with any restrictions and changes that may apply to your Subscription package. 
+<br><br>
+
+<h3>11. jaalifestyle.com COMPENSATION PLAN</h3>
+(1) The jaalifestyle.com compensation plan (commission, bonuses and benefits) and the requirements contained therein are also explicitly part of the Client agreement. The Client must comply with the provisions contained in the current version of this document.  (2) By submitting an online application to jaalifestyle.com, the Clients warrant that they have read and understood the compensation plan and accept these documents as a direct component of this agreement.  (3) jaalifestyle.com shall be entitled to change the compensation plan at any time. jaalifestyle.com will announce amendments within a reasonable period. The Client has the right to object to the amendment. In case of an objection the Client is entitled to terminate the contract at the date of entry into force of the modification. In case he/she does not terminate the contract the Client expressly accepts the modification.
+<br><br>
+
+<h3>12. COMPLIANCE WITH TAX OBLIGATIONS</h3>
+You are responsible for paying any governmental taxes imposed on your use of jaalifestyle.com, including sales, use, or value added taxes to the tax and/or other authorities in your jurisdiction. If requested, you will promptly furnish to jaalifestyle.com the applicable receipts or certificates regarding such remittances as soon as reasonably practicable. To the extent that jaalifestyle.com is obligated to collect such taxes, jaalifestyle.com will charge and add the applicable to your billing account.
+<br><br>
+
+<h3>13. RISK NOTICE</h3>
+You should carefully assess whether your financial situation and tolerance for risk and private situation is suitable for entering this market of digital publishing. Please be rational and do not use money you cannot afford to lose. You should be aware that no refund or reimbursement is possible, and no private or public insurance company will indemnify you for losses. If you have any concerns, please obtain advice from a qualified financial advisor and find advice and recommendation. <br><br>
+There may be additional risks that we have not foreseen or identified in our Terms of Use. It is your responsibility to comply always with your own local, national or state laws that relate to these situations.
+jaalifestyle.com informs you that past performance does not guarantee you future success, so you need to consider several factors to build up a strong strategy. Any data, prices, news, opinions, researches, analyses and/or any other information contained on the site is provided as general market commentary and does not constitute any concrete and direct advice in how anyone should or should not make any decisions in the market from any of the publications that are provided at or through our site. jaalifestyle.com will not accept liability for any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or reliance on such information and with all service provided by and offered by jaalifestyle.com. The company makes absolutely no guarantee about the future value of jaalifestyle.com. You accept that all participation at jaalifestyle.com is at your sole option, discretion and risk. <br><br>
+Forward-looking statements may be included in this side. They may include statements made as to future operations, costs, capital expenditures, cash flow, improvements in infrastructure, distribution and replenishment systems and operating efficiencies, sales and earnings estimates or trends and expansion plans and projections. These forward-looking statements are based on our current expectations. known and unknown internal and external risks and uncertainties may cause the actual results to be materially different from those expressed in or implied by the forward-looking statements
+The information contained within press releases issued by JAA Lifestyle should not be deemed accurate or current except as of the date the release was posted.<br><br>
+To the extent any information therein is forward-looking, it is intended to fit within the safe harbour for forward-looking statements and is subject to material risk. Any user should be advised to verify these statements, by third-party financial information.
+<br><br>
+
+<h3>14. REFUND POLICY</h3>
+Any fees charged to your account are non-refundable except as expressly stated in these Terms. You agree to submit any dispute regarding any charge to your account in writing to jaalifestyle.com within thirty (30) days of the charge, otherwise that dispute will be waived, and the charge will be final and not subject to challenge. Refunds (if any) made pursuant to a dispute, are at the discretion of jaalifestyle.com.
+Subscription can be cancelled without stating any reason. When you cancel a subscription with us, you will continue to receive your subscription benefits until the end of the current billing period. If you want to cancel a subscription you have with us, just contact us and we will help you. Email your refund or subscription cancellation request to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e3d1b1e1e011c1a2e040f0f0207080b1d1a17020b400d010340">[email&#160;protected]</a> Please include the words “Refund Request” or “Subscription Cancellation Request” in the subject line of your email.
+<br><br>
+We also offer a refund in the following situations:<br>
+If you made your purchase more than once, in one specific month<br>
+If a purchase was made without your permission<br>
+If this is the case, please contact customer support, provide the order number(s) or transaction ID(s) from the purchase, and specify which one(s) need refunded. We are unable to make a refund without an order number or transaction ID that verifies that you own the account.<br>
+<br>
+
+jaalifestyle.com is a yearly subscription service. If we've done something that has caused you to be unable to access your Account, please let us know and we'll try to fix it. If we can't fix it, you may be eligible for a refund.<br>
+You are responsible for paying any governmental taxes imposed on your use of the jaalifestyle.com Services, including sales, use, or value added taxes. If requested, you will promptly furnish to jaalifestyle.com the applicable receipts or certificates regarding such remittances as soon as reasonably practicable. To the extent that jaalifestyle.com is obligated to collect such taxes, jaalifestyle.com will charge your Payment Method or otherwise add the applicable to your billing account.
+<br><br>
+
+<h3>15. USERS GENERALLY</h3>
+15.1 As a condition of your access to and use of the Sites or Services, you agree that you will comply with all applicable laws and regulations when using the Sites or Services.
+15.2 You agree to use the Sites or Services solely for your own private and internal purposes. You agree that (a) you will not copy, reproduce, download, re-publish, sell, distribute or resell any Services or any information, text, images, graphics, video clips, sound, directories, files, databases or listings, etc available on or through the Sites (the “Site Content”), and (b) you will not copy, reproduce, download, compile or otherwise use any Site Content for the purposes of operating a business that competes with jaalifestyle.com, or otherwise commercially exploiting the Site Content. Systematic retrieval of Site Content from the Sites to create or compile, directly or indirectly, a collection, compilation, database or directory (whether through robots, spiders, automatic devices or manual processes) without written permission from jaalifestyle.com is prohibited. Use of any content or materials on the Sites for any purpose not expressly permitted in the Terms is prohibited. <br><br>
+15.3 You must read jaalifestyle.com Privacy Policy which governs the protection and use of personal information about Users in the possession of jaalifestyle.com and our affiliates. You accept the terms of the Privacy Policy and agree to the use of the personal information about you in accordance with the Privacy Policy.<br><br>
+15.4 jaalifestyle.com may allow Users to access to content, products or services offered by third parties through hyperlinks (in the form of word link, banners, channels or otherwise), API or otherwise to such third parties' websites. You are cautioned to read such websites' terms and conditions and/or privacy policies before using the Sites. You acknowledge that jaalifestyle.com has no control over such third parties' websites, does not monitor such websites, and shall not be responsible or liable to anyone for such websites, or any content, products or services made available on such web sites.<br><br>
+15.5 You agree not to undertake any action to undermine the integrity of the computer systems or networks of jaalifestyle.com and/or any other User nor to gain unauthorized access to such computer systems or networks.<br><br>
+15.6 You agree not to undertake any action which may undermine the integrity of the jaalifestyle.com feedback system, such as leaving positive feedback for yourself using secondary User IDs or through third parties or by leaving unsubstantiated negative feedback for another User.<br><br>
+15.7 By posting or displaying any information, content or material (“User Content”) on the Sites or providing any User Content to jaalifestyle.com or our representative(s), you grant an irrevocable, perpetual, worldwide, royalty-free, and sub-licensable (through multiple tiers) license to jaalifestyle.com to display, transmit, distribute, reproduce, publish, duplicate, adapt, modify, translate, create derivative works, and otherwise use any or all of the User Content in any form, media, or technology now known or not currently known in any manner and for any purpose which may be beneficial to the operation of the Sites, the provision of any Services and/or the business of the User. You confirm and warrant to jaalifestyle.com that you have all the rights, power and authority necessary to grant the above license.
+<br><br>
+
+<h3>16. USER ACCOUNTS</h3>
+Your jaalifestyle.com Account and Site <br>
+If you create an account or site with jaalifestyle.com, you are responsible for maintaining the security of your account and site, and you are fully responsible for all activities that occur under the account and any other actions taken in connection with the site. You must not describe or assign keywords to your site in a misleading or unlawful manner, including in a manner intended to trade on the name or reputation of others, and jaalifestyle.com may change or remove any description or keyword that it considers inappropriate or unlawful, or otherwise likely to cause jaalifestyle.com to be positioned for possible liability. You must immediately notify jaalifestyle.com of any unauthorized uses of your site, your account or any other breaches of security. jaalifestyle.com will not be liable for any acts or omissions by you, including any damages of any kind incurred as a result of such acts or omissions. <br><br>
+All information provided to us by you, either upon application for an Account, subsequently or in connection with your Account (including, but not limited to, name, surname, date of birth, place of residence, email address and telephone number) is complete, accurate, current and not misleading and that you will inform us immediately if there is any change to such information. <br><br>
+When you use the jaalifestyle.com Service to upload, download, or purchase content or any products, services, or information from jaalifestyle.com you may be asked to provide a password. You are solely responsible for maintaining the confidentiality of your account and password and for restricting access to your computer or device, and you agree to accept responsibility for all activities that occur under your account or password. You agree that the information you provide to jaalifestyle.com on registration and at all other times will be true, accurate, current, and complete. You also agree that you will ensure that this information is kept accurate and up-to-date at all times. If you have reason to believe that your account is no longer secure (e.g., in the event of a loss, theft or unauthorized disclosure or use of your account ID, password, or any credit, debit or charge card number, if applicable), then you must immediately notify the jaalifestyle.com Service. Your use of any account with an Integrated Service is subject to any terms, conditions, and. You are solely liable for the losses incurred by jaalifestyle.com or others due to any unauthorized use of your jaalifestyle.com Service account.
+
+<br><br>
+You shall not permit any third party to use your Account, and you are fully liable for any losses incurred by a third party on your Account. You shall inform us immediately if you suspect that a third party has obtained access to your Account, and you shall assist us fully in our investigations into the matter.<br><br>
+You understand that funds deposited into your Account do not earn any interest and you must not consider jaalifestyle.com as any form of financial or banking institution. <br>
+jaalifestyle.com reserves the right to terminate an account, ban a user and retain all funds where that user is reasonably suspected of engaging in fraudulent activities which include, but are not limited to, use of stolen or falsified credit cards or account numbers, chip dumping, forgery, collusion, and submission of data or documents which are forged, stolen or otherwise misappropriated.
+<br><br>
+
+<h3>17. USER’S RESPONSIBILITIES</h3>
+17.1 Each User represents warrants and agrees that (a) you have full power and authority to accept the Terms, to grant the license and authorization and to perform the obligations hereunder; (b) you use the Sites and Services for business purposes only; and (c) the address you provide when registering is the principal place of business of your business entity.  For purposes of this provision, a branch or liaison office will not be considered a separate entity and your principal place of business will be deemed to be that of your head office. <br><br>
+17.2 User will be required to provide information or material about your entity, business or products/services as part of the registration process on the Sites or your use of any Service or the User account.  Each User represents, warrants and agrees that (a) such information and material whether submitted during the registration process or thereafter throughout the continuation of the use of the Sites or Service is true, accurate, current and complete, and (b) you will maintain and promptly amend all information and material to keep it true, accurate, current and complete. <br><br>
+17.3 Upon becoming a User, you consent to the inclusion of the contact information about you in our Buyer Database and authorize jaalifestyle.com and our affiliates to share the contact information with other Users or otherwise use your personal information in accordance with the Privacy Policy.<br><br>
+17.4 You agree not to commit any act of the following prohibited conduct:  a. Use the jaalifestyle.com Service for any purpose other than to disseminate or receive original or appropriately licensed content and to access the jaalifestyle.com Service as such services are offered by jaalifestyle.com;  b. Delete the copyright or other proprietary rights markings on the jaalifestyle.com Service or User Submissions;  c. Make unsolicited offers, advertisements, proposals, or send junk mail or spam to other Users of the jaalifestyle.com Service. This includes, but is not limited to, unsolicited advertising, promotional materials, or other solicitation material, bulk mailing of commercial advertising, chain mail, informational announcements, charity requests, and petitions for signatures;  d. Use the jaalifestyle.com Service in violation of any local, state, national, or international law, including, without limitation, laws governing intellectual property and other proprietary rights, and data protection and privacy or post, upload, or distribute any defamatory, libellous, or inaccurate User Submissions or other content;  e. Defame, harass, abuse, threaten or defraud Users of the jaalifestyle.com Service, or post, upload, or distribute any User Submissions or other content that is unlawful or otherwise inappropriate, or collect, or attempt to collect, personal information about Users or third parties without their consent, or use the content on the jaalifestyle.com Service for any commercial use, it being understood that the content available on the jaalifestyle.com Service is for personal, non-commercial use only;  f. Rent, lease, loan, sell, resell, sublicense, distribute or otherwise transfer the licenses granted in these Terms or any Materials (as defined below);  g. Impersonate any person or entity, falsely claim an affiliation with any person or entity, or access the jaalifestyle.com Service accounts of others without permission, forge another persons' digital signature, misrepresent the source, identity, or content of information transmitted via the jaalifestyle.com Service, or perform any other similar fraudulent activity;  h. Hack, remove, circumvent, disable, damage or otherwise interfere with security-related features of the jaalifestyle.com Service or User Submissions, features that prevent or restrict use or copying of any content accessible through the jaalifestyle.com Service, or features that enforce limitations on the use of the jaalifestyle.com Service or User Submissions, or intentionally interfere with or damage operation of the jaalifestyle.com Service or any user's enjoyment of them, by any means, including uploading or otherwise disseminating viruses, adware, spyware, worms, or other malicious code;  i. Reverse engineer, decompile, disassemble or otherwise attempt to discover the source code of the jaalifestyle.com Service or any part thereof, except and only to the extent that such activity is expressly permitted by applicable law notwithstanding this limitation;  j. Modify, adapt, translate or create derivative works based upon the jaalifestyle.com Service or any part thereof, except and only to the extent that such activity is expressly permitted by these Terms or applicable law notwithstanding this limitation; or  k. Remove, obscure, block, hide or otherwise alter the display of any advertising (or any parts or aspects thereof), jaalifestyle.com brand elements, including logos, trademarks, service marks or other Materials displayed by jaalifestyle.com in connection with the jaalifestyle.com Service in any manner whatsoever, regardless of your use of the embedding functionality of the jaalifestyle.com Service to display authorized content on your or other third party sites.
+<br><br>
+
+<h3>18. BREACHES BY USERS</h3>
+18.1 jaalifestyle.com reserves the right in our sole discretion to remove, modify or reject any User Content that you submit to, post or display on the Sites which we reasonably believe is unlawful, violates the Terms, could subject jaalifestyle.com or our affiliates to liability, or is otherwise found inappropriate in jaalifestyle.com opinion. <br><br>
+18.2 If any User breaches any Terms or if jaalifestyle.com has reasonable grounds to believe that any User is in breach of any the Terms, jaalifestyle.com shall have the right to impose a penalty against the User or suspend or terminate the User’s account or subscription of any Service without any liability to the User.  jaalifestyle.com shall also have the right to restrict, refuse or ban any and all current or future use of any other Service that may be provided by jaalifestyle.com.  The penalties that jaalifestyle.com may impose include, among others, warning, removing any product listing or other User Content that the User has submitted, posted or displayed, imposing restrictions on the number of product listings that the User may post or display, or imposing restrictions on the User’s use of any features or functions of any Service for such period as jaalifestyle.com may consider appropriate in our sole discretion<br><br>
+18.3 Without limiting the generality of the provisions of the Terms, a User would be considered as being in breach of the Terms in any of the following circumstances:  a) upon complaint or claim from any third party,  b) jaalifestyle.com has reasonable grounds to suspect that such User has used a stolen credit card or other false or misleading information in any transaction with a counterparty,  c) jaalifestyle.com has reasonable grounds to suspect that any information provided by the User is not current or complete or is untrue, inaccurate, or misleading, or  d) jaalifestyle.com believes that the User’s actions may cause financial loss or legal liability to jaalifestyle.com or our affiliates or any other Users.<br><br>
+18.4 jaalifestyle.com reserves the right to cooperate fully with governmental authorities, private investigators and/or injured third parties in the investigation of any suspected criminal or civil wrongdoing.  Further, jaalifestyle.com may disclose the User's identity and contact information, if requested by a government or law enforcement body, an injured third party, or as a result of a subpoena or other legal action.  jaalifestyle.com shall not be liable for damages or results arising from such disclosure, and User agrees not to bring any action or claim against jaalifestyle.com for such disclosure.<br><br>
+18.5 If a User is in breach of the Terms, jaalifestyle.com also reserves the right to publish the records of such breach on the Sites.  If such breach involves or is reasonably suspected of involving dishonest or fraudulent activities, jaalifestyle.com also reserves the right to disclose the records of such breach to our affiliates including without limitation. Such jaalifestyle.com affiliates may impose limitation on, suspend or terminate the User’s use of all or part of the services provided by such affiliates to the User, take other remedial actions, and publish the records about the User’s breach of the Terms on the websites operated by or controlled by such jaalifestyle.com affiliates.<br><br>
+18.6 jaalifestyle.com may, at any time and in our reasonable discretion, impose limitations on, suspend or terminate the User’s use of any Service or the Sites without being liable to the User if jaalifestyle.com has received notice that the User is in breach of any agreement or undertaking with any affiliate of jaalifestyle.com and such breach involves or is reasonably suspected of involving dishonest or fraudulent activities.  jaalifestyle.com shall have the right to publish the records of such breach on the Sites. jaalifestyle.com shall not be required to investigate such breach or request confirmation from the User.<br><br>
+18.7 Each User agrees to indemnify jaalifestyle.com, our affiliates, directors, employees, agents and representatives and to hold them harmless, from any and all damages, losses, claims and liabilities (including legal costs on a full indemnity basis) which may arise from your submission, posting or display of any User Content, from your use of the Sites or Services, or from your breach of the Terms.
+<br><br>
+
+<h3>19. GENERAL REPRESENTATION AND WARRANTY</h3>
+You represent and warrant that (i) your use of the Website will be in strict accordance with the jaalifestyle.com Privacy Policy, with this Agreement and with all applicable laws and regulations (including without limitation any local laws or regulations in your country, state, city, or other governmental area, regarding online conduct and acceptable content, and including all applicable laws regarding the transmission of technical data exported from the country in which you reside) and (ii) your use of the Website will not infringe or misappropriate the intellectual property rights of any third party.<br><br>
+
+This User Agreement constitutes the entire agreement between the parties, and no other agreement, written or oral, exists between you and jaalifestyle.com. By using the Information on jaalifestyle.com, you assume full responsibility for any and all gains and losses, financial, emotional or otherwise, experienced, suffered or incurred by you. jaalifestyle.com does not guarantee the accuracy, completeness or timeliness of, or otherwise endorse in any way, the views, opinions or recommendations expressed in the Information, does not give investment advice, and does not advocate the purchase or sale of any security or investment by you or any other individual. The Information is not intended to provide tax, legal or investment advice, which you should obtain from your professional advisor prior to making any investment of the type discussed in the Information. The Information does not constitute a solicitation by the information providers, jaalifestyle.com or other of the purchase or sale of securities.
+
+
+<h3>20. INDEMNIFICATION</h3>
+You agree to indemnify jaalifestyle.com its affiliated companies, contractors, employees, agents and its third-party suppliers, licensors, and partners from any claims, losses, damages, liabilities, including legal fees and expenses, arising out of your use or misuse of the jaalifestyle.com Service, any violation by you of these Terms, or any breach of the representations, warranties, and covenants made by you in these Terms. jaalifestyle.com reserves the right, at your expense, to assume the exclusive defence and control of any matter for which you are required to indemnify jaalifestyle.com and you agree to cooperate with jaalifestyle.com's defence of these claims. Upon notice of any impending claim, action or proceeding, jaalifestyle.com will use reasonable efforts to notify of any indemnification obligation.
+
+
+<h3>21. DISCLAIMER OF WARRANTIES</h3>
+jaalifestyle.com and its affiliates, partners, licensors and suppliers disclaim all warranties, statutory, express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement of proprietary rights. No advice or information, whether oral or written, obtained by you from jaalifestyle.com or through the jaalifestyle.com service will create any warranty not expressly stated in these terms. You expressly acknowledge that this disclaimer includes jaalifestyle.com's officers, directors, employees, shareholders, agents, licensors and subcontractors. You expressly agree that the use of the jaalifestyle.com service is at your sole risk. The jaalifestyle.com service and any data, information, third-party software, user submissions, linked sites, products, services, or applications made available in conjunction with or through the jaalifestyle.com service are provided on an “as is” and “as available”, “with all faults” basis and without warranties or representations of any kind either express or implied. jaalifestyle.com its suppliers, licensors, affiliates, and partners do not warrant that the data, user submissions, or any other products, services or applications offered on or through the jaalifestyle.com service or any linked sites will be uninterrupted, or free of errors, viruses or other harmful components and do not warrant that any of the foregoing will be corrected. jaalifestyle.com its suppliers, licensors, affiliates, and partners do not warrant or make any representations regarding the use or the results of the use of the jaalifestyle.com service or any linked sites in terms of correctness, accuracy, reliability, or otherwise. You understand and agree that you use, access, download, or otherwise obtain information, materials, or data through the jaalifestyle.com service or any linked sites at your own discretion and risk and that you will be solely responsible for any damage to your property (including your computer system) or loss of data that results from the download or use of such material or data.
+
+
+<h3>22. LIMITATION OF LIABILITY AND DAMAGES</h3>
+a. Under no circumstances, including negligence, will jaalifestyle.com or its affiliates, contractors, employees, agents, or third-party partners, licensors, or suppliers be liable for any special, indirect, incidental, consequential, punitive, reliance, or exemplary damages (including without limitation lost business, lost revenues or loss of anticipated profits or any other pecuniary or non-pecuniary loss or damage of any nature whatsoever) arising out of or relating to these terms or that result from your use or your inability to use the  jaalifestyle.com service or any linked sites, or any other interactions with jaalifestyle.com or other jaalifestyle.com service users, even if jaalifestyle.com or an jaalifestyle.com authorized representative has been advised of the possibility of such damages. Applicable law may not allow the limitation or exclusion of liability or incidental or consequential damages, so the above limitation or exclusion may not apply to you. In such cases, jaalifestyle.com's liability will be limited to the fullest extent permitted by applicable law. In no event will jaalifestyle.com or its affiliates, contractors, employees, agents, or third-party partners, licensors, or suppliers total liability to you for all damages, losses, and causes of action arising out of or relating to these terms or your use of the jaalifestyle.com service or your interactions with jaalifestyle.com or other jaalifestyle.com service users (whether in contract, tort including negligence, warranty, or otherwise), exceed the amount paid by you, if any, for accessing the jaalifestyle.com service during the twelve (12) months immediately preceding the date of the claim or one hundred euros, whichever is greater. These limitations of liability also apply with respect to damages incurred by you by reason of any products or services sold or provided on any linked sites or otherwise by third parties other than jaalifestyle.com and received through or advertised on the jaalifestyle.com service or received through any linked sites.
+b. You acknowledge and agree that jaalifestyle.com has offered its products and services, set its prices, and entered into these terms in reliance upon the warranty disclaimers and the limitations of liability set forth in these terms, that the warranty disclaimers and the limitations of liability set forth in these terms reflect a reasonable and fair allocation of risk between you and jaalifestyle.com and that the warranty disclaimers and the limitations of liability set forth in these terms form an essential basis of the bargain between you and jaalifestyle.com. jaalifestyle.com would not be able to provide the jaalifestyle.com service to you on an economically reasonable basis without these limitations.
+c. Certain jurisdictions do not allow limitations on implied warranties or the exclusion or limitation of certain damages. If you reside is such a jurisdiction, some or all of the above disclaimers, exclusions, or limitations may not apply to you, and you may have additional rights. The limitations or exclusions of warranties, remedies or liability contained in these terms apply to you to the fullest extent such limitations or exclusions are permitted under the laws of the jurisdiction where you are located.
+d. Any material downloaded or otherwise obtained through the Sites is done at each User's sole discretion and risk and each User is solely responsible for any damage to jaalifestyle.com computer system or loss of data that may result from the download of any such material. No advice or information, whether oral or written, obtained by any User from jaalifestyle.com or through or from the Sites shall create any warranty not expressly stated herein.
+e. The Sites may make available to User services or products provided by independent third parties. No warranty or representation is made with regard to such services or products.   In no event, shall jaalifestyle.com and our affiliates be held liable for any such services or products.
+f. Each User hereby agrees to indemnify and save jaalifestyle.com, our affiliates, directors, officers and employees harmless, from any and all losses, claims, liabilities (including legal costs on a full indemnity basis) which may arise from such User's use of the Sites or Services (including but not limited to the display of such User's information on the Sites) or from your breach of any of the terms and conditions of the Terms. Each User hereby further agrees to indemnify and save jaalifestyle.com, our affiliates, directors, officers and employees harmless, from any and all losses, damages, claims, liabilities (including legal costs on a full indemnity basis) which may arise from User's breach of any representations and warranties made by User to jaalifestyle.com
+
+
+<h3>23. DISPUTES</h3>
+Should there be any claim or dispute arising from a past or current transaction, please Contact Us. If jaalifestyle.com is unable to settle the dispute, jaalifestyle.com will refer the dispute to an arbitrator whose decision will be final (save in respect of any manifest error) subject to full representation given to all parties involved. Arbitration procedures in London are conducted by the London Court of International Arbitration (“LCIA”). You understand and accept that we do not warrant in any way or manner that your use of the Site is legal in any jurisdiction and that it is your responsibility to ensure the legality of your actions. We cannot provide you with any legal advice as to the legality in your jurisdiction, nor can we accept any liability whatsoever for any punishment imposed upon you by any relevant authority as a consequence of the illegal use of the Site. We request that you take your own steps to ascertain the legality or otherwise in the jurisdiction in which you are situated prior to attempting to access and use our Site. You must not apply for or open an Account if you are located in a jurisdiction in which applying for or opening an Account and/or using our Services is unlawful or contrary to any applicable regulation (“Prohibited Jurisdiction”). It is your responsibility to ensure that this is not the case. We reserve the right to immediately suspend your Account if we discover that your Account has been opened, or is being used, from a Prohibited Jurisdiction” By accepting these Terms and Conditions and/or making use (whether authorized or not) of the Services offered by jaalifestyle.com (whether through the Website or otherwise), you irrevocably agree that the “LCIA” shall have exclusive jurisdiction to settle any dispute which may arise out of or in connection with these Terms and Conditions. Notwithstanding the foregoing, jaalifestyle.com shall be entitled to bring a claim against a customer in the court of the customer's country of domicile.
+
+
+<h3>24. FRAUD AND ANTI-MONEY LAUNDERING</h3>
+Strict fraud anti-money laundering regulations require that we address suspected money laundering and fraudulent activity or transactions that may take place through our business. In order to prevent this illegal activity from taking place, we have a number of policies and procedures that our staff complies with in order to allow any suspicious activity to be brought to our attention and dealt with in a legal and compliant manner. We are by law required to report suspicious activity to the relevant authorities, if we know or suspect, or have reason to suspect that any of your transactions, amongst other actions:  · Involve funds derived from illegal activities  · Are intended to conceal funds from illegal activities, or  · Involve the use of jaalifestyle.com to facilitate criminal activity.
+Users are strictly prohibited from utilizing jaalifestyle.com and it systems to facilitate any type of illegal money transfer system. You are prohibited from using the Website for any unlawful or fraudulent activity or prohibited transaction (including money laundering) under the laws of any jurisdiction that applies to You. If jaalifestyle.com has a suspicion that You may be engaging in or have engaged in fraudulent, unlawful or improper activity, including, without limitation;  · Money laundering activities   · Fraudulent registrations with third party details and/or payment methods
+In such cases where we know or suspect that you are in breach of our terms and any breach of anti-money laundering and anti-fraud/crime regulations, we may, at our sole discretion terminate or block your account in such circumstances; jaalifestyle.com is under no obligation to refund You any funds that may be in Your account. In addition, jaalifestyle.com shall be entitled to inform relevant authorities, and banks, credit card companies, electronic payment providers or other financial institutions of Your identity and of any suspected unlawful, fraudulent or improper activity and will cooperate fully with the Company to investigate any such activity.
+jaalifestyle.com accepts no liability under any circumstances for any loss you or any other person may incur as a result of unlawful, fraudulent or improper activity that puts you in breach of this section. In exercising our rights under this clause, we will ensure that our investigations are completed in a way that is fair to you and to our Users in general
+You shall indemnify and shall be liable to pay us, on demand, all costs, charges or losses sustained or incurred by us (including any direct, indirect or consequential losses, loss of profit and loss of reputation) arising directly or indirectly from your fraud, dishonesty or criminal actions.
+
+
+<h3>25. NO PARTNERSHIP, AGENCY, ETC
+</h3>
+Nothing in the Terms of Use shall be construed as creating any agency, partnership or any other form of joint enterprise between you and us.
+
+
+h326. FORCE MAJEURE
+Under no circumstances shall jaalifestyle.com be held liable for any delay or failure or disruption of the content or services delivered through the Sites resulting directly or indirectly from acts of nature, forces or causes beyond our reasonable control, including without limitation, Internet failures, computer, telecommunications or any other equipment failures, electrical power failures, strikes, labour disputes, riots, insurrections, civil disturbances, shortages of labour or materials, fires, flood, storms, explosions, acts of God, war, governmental actions, orders of domestic or foreign courts or tribunals or non-performance of third parties.
+
+
+<h3>27. INTELLECTUAL PROPERTY RIGHTS</h3>
+27.1 jaalifestyle.com is the sole owner or lawful licensee of all the rights and interests in the Sites and the Site Content. The Sites and Site Content embody trade secrets and other intellectual property rights protected under worldwide copyright and other laws. All title, ownership and intellectual property rights in the Sites and Site Content shall remain with jaalifestyle.com, our affiliates or licensors of the Site Content, as the case may be. All rights not otherwise claimed under the Terms or by jaalifestyle.com are hereby reserved.
+27.2 "JAA Lifestyle", "jaalifestyle.com", and related icons and logos are registered trademarks or trademarks or service marks of jaalifestyle.com, and related icons and logos are registered trademarks or trademarks or service marks of jaalifestyle.com, in various jurisdictions and are protected under applicable copyright, trademark and other proprietary rights laws. The unauthorized copying, modification, use or publication of these marks is strictly prohibited.
+27.3 jaalifestyle.com may have independent third parties involved in the provision of the Services (e.g., the authentication and verification service providers). You may not use any trademark, service mark or logo of such independent third parties without prior written approval from such parties.
+
+
+<h3>28. NOTICES</h3>
+28.1 All legal notices or demands to or upon jaalifestyle.com shall be made in writing and sent to jaalifestyle.com personally, by courier, certified mail, or facsimile to the following entity and address:    Attn: Legal Department - jaalifestyle.com<br>
+ JAA Lifestyle Limited<br>
+ 37th Floor<br> 
+ One Canada Square<br>
+ London<br>
+ England <br>
+E145AB<br>
+ The notices shall be effective when they are received by jaalifestyle.com in any of the above-mentioned manner.   
+<br>28.2 All legal notices or demands to or upon a User shall be effective if either delivered personally, sent by courier, certified mail, by facsimile or email to the last-known correspondence, fax or email address provided by the User to jaalifestyle.com, or by posting such notice or demand on an area of the Sites that is publicly accessible without a charge. Notice to a User shall be deemed to be received by such User if and when:  a. jaalifestyle.com is able to demonstrate that communication, whether in physical or electronic form, has been sent to such User, or b. Immediately upon, jaalifestyle.com posted such notice on an area of the Sites that is publicly accessible without charge. 
+<br>28.3 You agree that all agreements, notices, demands, disclosures and other communications that jaalifestyle.com sends to you electronically satisfy the legal requirement that such communication should be in writing.
+
+
+<h3>29. GENERAL PROVISIONS</h3>
+29.1 Subject to any Additional Agreements, the Terms constitute the entire agreement between you and jaalifestyle.com with respect to and governs your use of the Sites and Services, superseding any prior written or oral agreements in relation to the same subject matter herein. <br>29.2 jaalifestyle.com and you are independent contractors, and no agency, partnership, joint venture, employee-employer or franchisor-franchisee relationship is intended or created by the Terms. <br>29.3 If any provision of the Terms is held to be invalid or unenforceable, such provision shall be deleted and the remaining provisions shall remain valid and be enforced.<br> 29.4 Headings are for reference purposes only and in no way define, limit, construe or describe the scope or extent of such section.<br> 29.5 If jaalifestyle.com failure to enforce any right or failure to act with respect to any breach by you under the Terms will not constitute a waiver of that right nor a waiver of jaalifestyle.com right to act with respect to subsequent or similar breaches. <br>29.6 jaalifestyle.com shall have the right to assign the Terms (including all our rights, titles, benefits, interests, and obligations and duties in the Terms to any person or entity (including any affiliates of jaalifestyle.com). You may not assign, in whole or part, the Terms to any person or entity.
+
+
+        </div>
+    </div>
+
+</form>
+
+                </div>
+                                <div class="right" style="background-image:url('v2/img/forgot.png');">
+                    <div class="bullets"></div>
+                </div>
+            </div>
+        </div>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="v2/js/app.js"></script>
+        <script>
+    $(function() {
+        $('#dob').mask('99/99/9999');
+
+        $('#country').on('change', function() {
+            if ($(this).val() == 230) {
+                $('#state_control').show();
+            } else {
+                $('#state_control').hide();
+            }
+        });
+
+        if ($('#country').val() = 230) {
+            $('#state_control').show();
+        }
+    });
+
+    var reg = /^[\d()+-]+$/
+
+    function restrictInput(e){
+        var c = String.fromCharCode(e.which)
+        if(reg.test(c))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    $(document).ready(function(){
+        $( "#phone" ).keypress(function( e) {
+            return restrictInput(e);
+        });
+    });
+
+    $(document).ready(function() {
+        $('#privacy-modal-trigger').click(function(e){
+            e.preventDefault();
+            $('#privacy-modal').modal();
+        });
+        $('#terms-modal-trigger').click(function(e){
+            e.preventDefault();
+            $('#terms-modal').modal();
+        });
+    });
+</script>
+    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.eu01.nr-data.net","licenseKey":"NRJS-34f9bba67d35aad7e1d","applicationID":"212821081","transactionName":"MhBSZQoZWEUFVxdcWwtacVIMEVlYS0cKUlpIAEA=","queueTime":0,"applicationTime":49,"atts":"HldRE0IDS0s=","errorBeacon":"bam.eu01.nr-data.net","agent":""}</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"67914e0cfa024d2d","token":"095abb3cc70a43cf8226ce51972f46ab","version":"2021.7.0","si":10}'></script>
+</body>
+</html>
